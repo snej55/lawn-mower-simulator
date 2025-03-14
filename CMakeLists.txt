@@ -7,7 +7,9 @@ set(CMAKE_CPP_COMPILER g++)
 
 set(BIN_NAME main)
 
-set(SOURCES main.cpp src/constants.hpp src/texture.hpp src/util.hpp)
+set(SOURCES main.cpp src/constants.hpp src/util.hpp
+        src/app.h
+        src/texture.h)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
