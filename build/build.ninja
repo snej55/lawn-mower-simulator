@@ -66,8 +66,7 @@ build CMakeFiles/main.dir/main.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/j
 
 build main: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.o
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/jenskromdijk/projects/lawn-mower-simulator/lib  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_image  -lSDL2_mixer  -lSDL2_ttf
-  LINK_PATH = -L/home/jenskromdijk/projects/lawn-mower-simulator/lib
+  LINK_LIBRARIES = -lSDL2main  -lSDL2  -lSDL2_image  -lSDL2_mixer  -lSDL2_ttf
   OBJECT_DIR = CMakeFiles/main.dir
   POST_BUILD = :
   PRE_LINK = :

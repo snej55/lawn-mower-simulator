@@ -1,7 +1,7 @@
 //
 // Created by jenskromdijk on 14/03/25.
 //
-// A simple class to handle texture loading and rendering.
+// This is a simple class to handle texture loading and rendering.
 //
 
 #ifndef TEXTURE_H
