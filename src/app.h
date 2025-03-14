@@ -124,27 +124,28 @@ public:
         SDL_Event event;
         bool running {true};
 
-        int mouseX{0};
-        int mouseY{0};
-        int windowX{0};
-        int windowY{0};
-
         do {
             while (SDL_PollEvent(&event) != 0) {
                 if (event.type == SDL_QUIT) {
                     running = false;
                 } else if (event.type == SDL_MOUSEMOTION)
                 {
-                    SDL_GetGlobalMouseState(&mouseX, &mouseY);
-                    mouseX -= windowX;
-                    mouseY -= windowY;
+                    SDL_GetGlobalMouseState(&_mouseX, &_mouseY);
+                    _mouseX -= _windowX;
+                    _mouseY -= _windowY;
+                } else if (event.type == SDL_WINDOWEVENT)
+                {
+                    // handle window events
+                    _width = event.window.data1 / 3;
+                    _height = event.window.data2 / 3;
+                    SDL_RenderPresent(_renderer);
                 }
             }
 
-            SDL_GetWindowPosition(_window, &windowX, &windowY);
+            SDL_GetWindowPosition(_window, &_windowX, &_windowY);
 
             // clear screen
-            SDL_SetRenderDrawColor(_renderer, 0x00, 0x00, 0x00, SDL_ALPHA_OPAQUE);
+            SDL_SetRenderDrawColor(_renderer, 0xFF, 0x00, 0x00, SDL_ALPHA_OPAQUE);
             SDL_RenderClear(_renderer);
 
             SDL_SetRenderDrawBlendMode(_renderer, SDL_BLENDMODE_NONE);
@@ -154,11 +155,42 @@ public:
         } while (running);
     }
 
+    [[nodiscard]] int getWidth() const {
+        return _width;
+    }
+
+    [[nodiscard]] int getHeight() const {
+        return _height;
+    }
+
+    [[nodiscard]] int getMouseX() const {
+        return _mouseX;
+    }
+
+    [[nodiscard]] int getMouseY() const {
+        return _mouseY;
+    }
+
+    [[nodiscard]] int getWindowX() const {
+        return _windowX;
+    }
+
+    [[nodiscard]] int getWindowY() const {
+        return _windowY;
+    }
+
 private:
     SDL_Window* _window {nullptr};
     SDL_Renderer* _renderer {nullptr};
 
     bool _closed{false};
+
+    int _width {WINDOW_WIDTH};
+    int _height {WINDOW_HEIGHT};
+    int _mouseX {0};
+    int _mouseY {0};
+    int _windowX {0};
+    int _windowY {0};
 };
 
 #endif //APP_H
