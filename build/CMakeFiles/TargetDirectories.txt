@@ -1,0 +1,3 @@
+/home/jenskromdijk/projects/lawn-mower-simulator/build/CMakeFiles/main.dir
+/home/jenskromdijk/projects/lawn-mower-simulator/build/CMakeFiles/edit_cache.dir
+/home/jenskromdijk/projects/lawn-mower-simulator/build/CMakeFiles/rebuild_cache.dir
